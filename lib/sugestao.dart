@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './rotas_sugestão/gerar_cotacao.dart';
 import './drawer_menu.dart';
+import './rotas_sugestão/historico.dart';
 
 class SugestaoDeComprasScreen extends StatefulWidget {
   const SugestaoDeComprasScreen({super.key});
@@ -268,7 +269,7 @@ class _SugestaoDeComprasScreenState extends State<SugestaoDeComprasScreen>
   }
 
   Widget _buildHistorico() {
-    return Center(child: Text('Histórico de Compras Aqui.'));
+    return Historico();
   }
 
   // Alterado o nome do método para "buildGerarCotacao"
