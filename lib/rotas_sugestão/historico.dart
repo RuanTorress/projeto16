@@ -19,19 +19,30 @@ class _HistoricoState extends State<Historico> {
 
   // Variáveis de data
   DateTime? selectedDate;
+  bool isDataImported = false;
+  // Variável para armazenar o intervalo de datas selecionado
+  DateTimeRange? selectedDateRange;
 
   // Função para selecionar uma única data
-  Future<void> _selectDate() async {
-    final DateTime? picked = await showDatePicker(
+  Future<void> _selectDateRange() async {
+    // Usa o showDateRangePicker, mas não ocupa toda a tela
+    DateTimeRange? pickedRange = await showDateRangePicker(
       context: context,
-      initialDate: selectedDate ?? DateTime.now(),
+      initialDateRange: selectedDateRange ??
+          DateTimeRange(
+            start: DateTime.now(),
+            end: DateTime.now(),
+          ),
       firstDate: DateTime(2000),
-      lastDate: DateTime(2101),
+      lastDate: DateTime(2310),
     );
-    if (picked != null && picked != selectedDate)
+
+    // Verifica se o intervalo foi selecionado
+    if (pickedRange != null) {
       setState(() {
-        selectedDate = picked;
+        selectedDateRange = pickedRange;
       });
+    }
   }
 
   @override
@@ -80,14 +91,15 @@ class _HistoricoState extends State<Historico> {
                         ),
                       ),
                       SizedBox(width: 16),
-                      // 2. Período
+                      // 2. Período data
                       Flexible(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text('Período'),
                             GestureDetector(
-                              onTap: _selectDate,
+                              onTap:
+                                  _selectDateRange, // Chama o seletor de intervalo de datas
                               child: Container(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 8, vertical: 14),
@@ -100,24 +112,40 @@ class _HistoricoState extends State<Historico> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    // Data com ícone
                                     Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        const Icon(
-                                          Icons.calendar_today,
-                                          size: 18,
-                                          color: Colors.grey,
-                                        ),
+                                        const Icon(Icons.calendar_today,
+                                            size: 18, color: Colors.grey),
                                         const SizedBox(width: 6),
                                         Text(
-                                          selectedDate != null
-                                              ? selectedDate!
+                                          selectedDateRange != null
+                                              ? selectedDateRange!.start
+                                                  .toLocal()
                                                   .toString()
                                                   .substring(0, 10)
-                                              : "Selecione",
+                                              : "Início",
                                           style: const TextStyle(fontSize: 14),
-                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ],
+                                    ),
+                                    const Text(' | ',
+                                        style: TextStyle(
+                                            color: Colors.grey, fontSize: 14)),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        const Icon(Icons.calendar_today,
+                                            size: 18, color: Colors.grey),
+                                        const SizedBox(width: 6),
+                                        Text(
+                                          selectedDateRange != null
+                                              ? selectedDateRange!.end
+                                                  .toLocal()
+                                                  .toString()
+                                                  .substring(0, 10)
+                                              : "Fim",
+                                          style: const TextStyle(fontSize: 14),
                                         ),
                                       ],
                                     ),
@@ -128,6 +156,7 @@ class _HistoricoState extends State<Historico> {
                           ],
                         ),
                       ),
+
                       SizedBox(width: 16),
                       // 3. Tipo de Região
                       Flexible(
@@ -146,7 +175,7 @@ class _HistoricoState extends State<Historico> {
                                 height:
                                     8), // Espaçamento entre o título e o Dropdown
 
-                            // Dropdown estilizado
+                            // Dropdown estilizado ruan fabio
                             Container(
                               padding: EdgeInsets.symmetric(horizontal: 12),
                               decoration: BoxDecoration(
@@ -464,10 +493,4 @@ class _HistoricoState extends State<Historico> {
       ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: Historico(),
-  ));
 }

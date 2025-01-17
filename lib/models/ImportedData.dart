@@ -1,0 +1,61 @@
+class ImportedData {
+  static List<Map<String, String>> getAllData() {
+    return [
+      {
+        "Código": "001",
+        "Razão Social": "Alpha Comércio Ltda.",
+        "Nome Fantasia": "Alpha",
+        "CNPJ": "12.345.678/0001-90",
+        "Qtd. Entrada": "150",
+        "Total Entrada": "7500",
+        "Qtd. Saída": "120",
+        "Total Saída": "6000",
+        "Associado": "Sim",
+      },
+      {
+        "Código": "002",
+        "Razão Social": "Beta Indústrias S/A",
+        "Nome Fantasia": "Beta Indústrias",
+        "CNPJ": "23.456.789/0002-91",
+        "Qtd. Entrada": "300",
+        "Total Entrada": "15000",
+        "Qtd. Saída": "250",
+        "Total Saída": "12500",
+        "Associado": "Não",
+      },
+      {
+        "Código": "003",
+        "Razão Social": "Gama Distribuidora Ltda.",
+        "Nome Fantasia": "Distribuidora Gama",
+        "CNPJ": "34.567.890/0003-92",
+        "Qtd. Entrada": "500",
+        "Total Entrada": "25000",
+        "Qtd. Saída": "450",
+        "Total Saída": "22500",
+        "Associado": "Sim",
+      },
+      {
+        "Código": "004",
+        "Razão Social": "Delta Serviços ME",
+        "Nome Fantasia": "Delta Serviços",
+        "CNPJ": "45.678.901/0004-93",
+        "Qtd. Entrada": "400",
+        "Total Entrada": "20000",
+        "Qtd. Saída": "350",
+        "Total Saída": "17500",
+        "Associado": "Não",
+      },
+      {
+        "Código": "005",
+        "Razão Social": "Epsilon Logística Ltda.",
+        "Nome Fantasia": "Logística Epsilon",
+        "CNPJ": "56.789.012/0005-94",
+        "Qtd. Entrada": "250",
+        "Total Entrada": "12500",
+        "Qtd. Saída": "200",
+        "Total Saída": "10000",
+        "Associado": "Sim",
+      },
+    ];
+  }
+}

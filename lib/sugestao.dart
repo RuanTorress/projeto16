@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './rotas_sugestão/gerar_cotacao.dart';
 import './drawer_menu.dart';
 import './rotas_sugestão/historico.dart';
+import './rotas_sugestão/status_service.dart'; // Importando a classe StatusService
 
 class SugestaoDeComprasScreen extends StatefulWidget {
   const SugestaoDeComprasScreen({super.key});
@@ -59,7 +60,7 @@ class _SugestaoDeComprasScreenState extends State<SugestaoDeComprasScreen>
           ),
         ),
       ),
-      drawer: DrawerMenu(),
+      drawer: DrawerMenu(), // menu do lado esquerdo
       body: TabBarView(
         controller: _tabController,
         children: [
@@ -71,7 +72,12 @@ class _SugestaoDeComprasScreenState extends State<SugestaoDeComprasScreen>
     );
   }
 
+  // Método para construir a tela de "Resumo de Hoje"
   Widget _buildResumoDeHoje() {
+    // Usando a lógica da StatusService para pegar os dados
+    List<String> statusList = StatusService.getStatus();
+    String cotacaoHoje = StatusService.getCotacaoHoje();
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -83,21 +89,28 @@ class _SugestaoDeComprasScreenState extends State<SugestaoDeComprasScreen>
           ),
           SizedBox(height: 8),
           Text(
-            'Data: ${DateTime.now().toLocal().toString().split(' ')[0]}',
+            cotacaoHoje,
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
           ),
           SizedBox(height: 16),
+
+          // Exibe os status de cotação usando a lista retornada pela StatusService
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _buildResumoItem("Gerado Sugestão", Colors.yellow),
-              _buildResumoItem("Pendente Plataforma", Colors.green.shade100),
-              _buildResumoItem("Em Análise Operador", Colors.orange.shade100),
-              _buildResumoItem("Em Análise Associado", Colors.blue.shade100),
-              _buildResumoItem("Pendente de Envio", Colors.purple.shade100),
-              _buildResumoItem("Finalizado", Colors.green.shade300),
-            ],
+            children: statusList.map((status) {
+              return _buildResumoItem(
+                  status, Colors.yellow); // Exibe cada status na tela
+            }).toList(),
           ),
+
+          const Divider(
+            // Linha de divisão
+            color: Colors.grey, // Cor da linha
+            thickness: 1, // Espessura da linha
+            indent: 0, // Espaçamento antes da linha
+            endIndent: 0, // Espaçamento depois da linha
+          ),
+
           SizedBox(height: 16),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

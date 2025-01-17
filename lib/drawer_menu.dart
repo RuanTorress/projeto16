@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import './loguin.dart';
 import './sugestao.dart';
+import './models/custom_body.dart';
 
 class DrawerMenu extends StatelessWidget {
   const DrawerMenu({super.key});
@@ -28,7 +29,12 @@ class DrawerMenu extends StatelessWidget {
             leading: Icon(Icons.import_export),
             title: Text('Importar Movimento'),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MyForm(),
+                ),
+              );
               // Navegar para a tela de Importar Movimento
             },
           ),
