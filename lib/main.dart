@@ -1,50 +1,28 @@
 import 'package:flutter/material.dart';
-import 'drawer_menu.dart'; // Certifique-se de que o caminho está correto
 import 'models/transaction.dart';
-import './models/custom_body.dart'; // Corrigir o caminho de importação
+import './models/custom_body.dart';
+import './navegacao_lateral/nav_pagina.dart';
+import 'package:google_fonts/google_fonts.dart';
+import './navegacao_lateral/navegacao_lateral.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-// menu do lado esquerdo
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Aplicativo com Drawer',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return LayoutBuilder(
+      builder: (context, constraints) => MaterialApp(
+        theme: ThemeData(
+          textTheme: GoogleFonts.poppinsTextTheme(),
+          iconTheme: const IconThemeData(size: 22),
+        ),
+        title: 'Central de compras',
+        home: NavegacaoLateral(constraints: constraints),
       ),
-      home: HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-// pagiga de importação
-
-class _HomePageState extends State<HomePage> {
-  Transaction transaction = Transaction(
-    description: 'Informações importadas',
-    amount: '',
-  );
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Importar dados'),
-      ),
-      drawer: DrawerMenu(), // Utiliza a classe DrawerMenu
-      body: MyForm(), // Alterado para utilizar DatePickerExample
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import './rotas_sugestão/gerar_cotacao.dart';
-import './drawer_menu.dart';
+
 import './rotas_sugestão/historico.dart';
 import './rotas_sugestão/status_service.dart'; // Importando a classe StatusService
 
@@ -60,7 +60,6 @@ class _SugestaoDeComprasScreenState extends State<SugestaoDeComprasScreen>
           ),
         ),
       ),
-      drawer: DrawerMenu(), // menu do lado esquerdo
       body: TabBarView(
         controller: _tabController,
         children: [
