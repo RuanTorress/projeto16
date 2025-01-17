@@ -5,6 +5,7 @@ import '../relatorios/relatorios.dart';
 import '../sugestao_compras/sugestao.dart';
 import 'package:flutter/material.dart';
 import '../models/custom_body.dart';
+import '../cadastros/loguin.dart';
 
 /// Opções de página que aparecem na barra de navegação.
 ///
@@ -46,7 +47,7 @@ class PaginaNav {
       titulo: 'Cadastros',
       icone: Icons.library_books_outlined,
       iconeSelecionado: Icons.library_books,
-      pagina: const Cadastros(),
+      pagina: const LoginPage(),
     ),
     PaginaNav(
       titulo: 'Relatórios',
