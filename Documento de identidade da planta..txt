@@ -1,0 +1,14 @@
+Arvore de construção 
+
+. main = tem que chama todas as telas .
+
+. tela de menu do canto e Drawer = temos rota para outras pagina : Importar Movimento/ Sugestão de Compra / Cadastros /
+ Relatorios / controle de acesso  / login .
+
+. tela de sugestão de compras = PASTA : rotas_sugestão: tem mas trez tela, Resumo de cotação de hoje/Historico/GeraCotação
+
+. tela de importa / custom_body.dart => ela inteligar com transaction : TRANSACTION e para ajudar dividir a as fucionalidades
+da custom_body que tem muita fucionalidade .
+
+. tela de Sugestão / sugestao.dart => na tela de sugestõ temos mas 2 abas de navegação para outras telas que estão na pasta lib/ pasta rotas_gestao 
+/ onde tem as duas abas / gerar_cotacao / historico
