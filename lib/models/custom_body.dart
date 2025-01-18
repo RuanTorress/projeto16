@@ -3,17 +3,31 @@ import './data_selector.dart';
 import './client_dropdown.dart';
 import './imported_data_table.dart';
 import './ImportedData.dart';
+<<<<<<< HEAD
 
 class MyForm extends StatefulWidget {
   const MyForm({super.key});
 
+=======
+import '../navegacao_lateral/nav_pagina.dart';
+
+void main() {
+  runApp(MaterialApp(home: MyForm())); // Removido o "const"
+}
+
+class MyForm extends StatefulWidget {
+>>>>>>> c133d806e1e8f2e9a3a00d2e0ea54b68018697d8
   @override
   _MyFormState createState() => _MyFormState();
 }
 
 class _MyFormState extends State<MyForm> {
+<<<<<<< HEAD
   DateTimeRange?
       _selectedDateRange; // Alterado para suportar intervalo de datas
+=======
+  DateTime? _selectedDate;
+>>>>>>> c133d806e1e8f2e9a3a00d2e0ea54b68018697d8
   String? _selectedClient;
   bool _isAssociatedOnly = false;
   List<Map<String, String>> _importedData = [];
@@ -29,6 +43,7 @@ class _MyFormState extends State<MyForm> {
 
   List<Map<String, String>> _filterData() {
     return _importedData.where((data) {
+<<<<<<< HEAD
       // Filtro para data
       final matchesDate = _selectedDateRange == null ||
           (data['Data'] != null &&
@@ -57,6 +72,24 @@ class _MyFormState extends State<MyForm> {
               false);
 
       // Retorna se todos os filtros foram satisfeitos
+=======
+      final matchesDate =
+          _selectedDate == null || true; // Campo 'Data' não existe
+      final matchesClient = _selectedClient == null ||
+          _selectedClient == 'Selecionar Todos' ||
+          data['Nome Fantasia']?.toLowerCase() ==
+              _selectedClient?.toLowerCase();
+      final matchesAssociate = !_isAssociatedOnly || data['Associado'] == 'Sim';
+      final matchesSearch = _searchText.isEmpty ||
+          data['Razão Social']
+                  ?.toLowerCase()
+                  .contains(_searchText.toLowerCase()) ==
+              true ||
+          data['Nome Fantasia']
+                  ?.toLowerCase()
+                  .contains(_searchText.toLowerCase()) ==
+              true;
+>>>>>>> c133d806e1e8f2e9a3a00d2e0ea54b68018697d8
       return matchesDate && matchesClient && matchesAssociate && matchesSearch;
     }).toList();
   }
@@ -64,6 +97,7 @@ class _MyFormState extends State<MyForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< HEAD
       appBar: AppBar(
         title: const Text(
           'Formulário de Importação',
@@ -146,6 +180,77 @@ class _MyFormState extends State<MyForm> {
                       width: 500, // Definindo uma largura fixa para o campo
                       child: TextField(
                         decoration: const InputDecoration(
+=======
+      appBar: AppBar(title: Text('Formulário de Importação')),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Linha no topo da Seção Superior (antes de qualquer conteúdo)
+            Divider(),
+
+            // Seção Superior com os filtros
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                DataSelector(
+                  selectedDate: _selectedDate,
+                  onDateSelected: (date) {
+                    setState(() {
+                      _selectedDate = date;
+                    });
+                  },
+                ),
+                ClientDropdown(
+                  selectedClient: _selectedClient,
+                  onClientSelected: (client) {
+                    setState(() {
+                      _selectedClient = client;
+                    });
+                  },
+                ),
+                Row(
+                  children: [
+                    Text('Somente Associado:'),
+                    Switch(
+                      value: _isAssociatedOnly,
+                      onChanged: (value) {
+                        setState(() {
+                          _isAssociatedOnly = value;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                ElevatedButton(
+                  onPressed: _importData,
+                  child: Text('Importar Dados'),
+                ),
+              ],
+            ),
+
+            // Linha divisória entre Seção Superior e Seção Inferior
+            Divider(),
+
+            // Seção Inferior com Pesquisa e Tabela
+            if (_isDataImported)
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: Row(
+                  children: [
+                    Text(
+                      'Informações Importadas',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(width: 16),
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+>>>>>>> c133d806e1e8f2e9a3a00d2e0ea54b68018697d8
                           labelText: 'Pesquisar Cliente',
                           border: OutlineInputBorder(),
                           suffixIcon: Icon(Icons.search),
@@ -157,6 +262,7 @@ class _MyFormState extends State<MyForm> {
                         },
                       ),
                     ),
+<<<<<<< HEAD
                     const SizedBox(
                         width:
                             225), // espaça mento do campo do pesquisa cliente
@@ -169,6 +275,13 @@ class _MyFormState extends State<MyForm> {
               thickness: 1, // Espessura da linha
             ),
 
+=======
+                  ],
+                ),
+              ),
+
+            // Exibição da tabela de dados importados (Tabela ocupa toda a largura)
+>>>>>>> c133d806e1e8f2e9a3a00d2e0ea54b68018697d8
             if (_isDataImported)
               Expanded(
                 child: SingleChildScrollView(

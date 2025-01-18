@@ -34,7 +34,11 @@ class PaginaNav {
       titulo: 'Importa movimento',
       icone: Icons.cloud_sync_outlined,
       iconeSelecionado: Icons.cloud_sync,
+<<<<<<< HEAD
       pagina: const MyForm(),
+=======
+      pagina: const Relatorios(),
+>>>>>>> c133d806e1e8f2e9a3a00d2e0ea54b68018697d8
       selecionado: true, // Inicia com essa página selecionada.
     ),
     PaginaNav(

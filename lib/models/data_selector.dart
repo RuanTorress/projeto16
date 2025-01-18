@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DataSelector extends StatelessWidget {
+<<<<<<< HEAD
   // Variáveis de entrada que representam o intervalo de datas selecionado
   // e a função que será chamada quando uma nova seleção for feita.
   final DateTimeRange? selectedDateRange;
@@ -12,10 +13,17 @@ class DataSelector extends StatelessWidget {
     required this.onDateRangeSelected, // Função para atualizar a data selecionada
     Key? key,
   }) : super(key: key);
+=======
+  final DateTime? selectedDate;
+  final Function(DateTime?) onDateSelected;
+
+  DataSelector({required this.selectedDate, required this.onDateSelected});
+>>>>>>> c133d806e1e8f2e9a3a00d2e0ea54b68018697d8
 
   @override
   Widget build(BuildContext context) {
     return Column(
+<<<<<<< HEAD
       crossAxisAlignment:
           CrossAxisAlignment.start, // Alinha os filhos à esquerda
       children: [
@@ -129,13 +137,39 @@ class DataSelector extends StatelessWidget {
               ],
             ),
           ),
+=======
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('Selecione a Data:', style: TextStyle(fontSize: 16)),
+        Row(
+          children: [
+            Text(selectedDate != null
+                ? selectedDate!.toLocal().toString().split(' ')[0]
+                : 'Nenhuma data selecionada'),
+            IconButton(
+              icon: Icon(Icons.calendar_today),
+              onPressed: () async {
+                final DateTime? picked = await showDatePicker(
+                  context: context,
+                  initialDate: selectedDate ?? DateTime.now(),
+                  firstDate: DateTime(2000),
+                  lastDate: DateTime(2101),
+                );
+                onDateSelected(picked);
+              },
+            ),
+          ],
+>>>>>>> c133d806e1e8f2e9a3a00d2e0ea54b68018697d8
         ),
       ],
     );
   }
+<<<<<<< HEAD
 
   // Método para formatar a data de forma legível
   String _formatDate(DateTime date) {
     return '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
   }
+=======
+>>>>>>> c133d806e1e8f2e9a3a00d2e0ea54b68018697d8
 }

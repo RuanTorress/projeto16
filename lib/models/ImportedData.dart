@@ -11,7 +11,10 @@ class ImportedData {
         "Qtd. Saída": "120",
         "Total Saída": "6000",
         "Associado": "Sim",
+<<<<<<< HEAD
         "Data": "2025-01-10",
+=======
+>>>>>>> c133d806e1e8f2e9a3a00d2e0ea54b68018697d8
       },
       {
         "Código": "002",
@@ -23,7 +26,10 @@ class ImportedData {
         "Qtd. Saída": "250",
         "Total Saída": "12500",
         "Associado": "Não",
+<<<<<<< HEAD
         "Data": "2025-01-11",
+=======
+>>>>>>> c133d806e1e8f2e9a3a00d2e0ea54b68018697d8
       },
       {
         "Código": "003",
@@ -35,6 +41,7 @@ class ImportedData {
         "Qtd. Saída": "450",
         "Total Saída": "22500",
         "Associado": "Sim",
+<<<<<<< HEAD
         "Data": "2025-01-12",
       },
       {
@@ -48,6 +55,19 @@ class ImportedData {
         "Total Saída": "9000",
         "Associado": "Sim",
         "Data": "2025-01-13",
+=======
+      },
+      {
+        "Código": "004",
+        "Razão Social": "Delta Serviços ME",
+        "Nome Fantasia": "Delta Serviços",
+        "CNPJ": "45.678.901/0004-93",
+        "Qtd. Entrada": "400",
+        "Total Entrada": "20000",
+        "Qtd. Saída": "350",
+        "Total Saída": "17500",
+        "Associado": "Não",
+>>>>>>> c133d806e1e8f2e9a3a00d2e0ea54b68018697d8
       },
       {
         "Código": "005",
@@ -59,6 +79,7 @@ class ImportedData {
         "Qtd. Saída": "200",
         "Total Saída": "10000",
         "Associado": "Sim",
+<<<<<<< HEAD
         "Data": "2025-01-14",
       },
       {
@@ -192,6 +213,8 @@ class ImportedData {
         "Total Saída": "22500",
         "Associado": "Sim",
         "Data": "2025-02-06",
+=======
+>>>>>>> c133d806e1e8f2e9a3a00d2e0ea54b68018697d8
       },
     ];
   }
